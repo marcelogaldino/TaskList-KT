@@ -163,9 +163,14 @@ fun main() {
         """
         )
         println("LISTA ATUAL DE TAREFAS:")
-        println(taskManager.listAll().joinToString(
+        val allTasks = taskManager.listAll()
+        println(allTasks.joinToString(
             separator = "\n"
         ).ifEmpty { "Nenhuma tarefa foi adicionada até o momento" })
+        println("Qauntidade de tarefas concluídas")
+        print("-> ")
+        val tasksDoneAmount = taskManager.filterBy(isCompleted = true).count()
+        println(tasksDoneAmount)
 
         println("\nInsira a ação do gerenciador de tarefas:")
         print("-> ")
